@@ -1,8 +1,7 @@
 pragma solidity 0.4.23;
 
 import "../zeppelin/contracts/ownership/CanReclaimToken.sol";
-import "../zeppelin/contracts/ownership/Claimable.sol";
-
+import "./access/MultiOwnable.sol";
 
 /**
  * @title Recoverable ensures ether and ERC20 tokens can be claimed by the
@@ -11,7 +10,7 @@ import "../zeppelin/contracts/ownership/Claimable.sol";
  * @dev Prevents accidental loss of tokens and ether erroneously sent to
  * this contract
  */
-contract Recoverable is CanReclaimToken, Claimable {
+contract Recoverable is CanReclaimToken, MultiOwnable {
   using SafeERC20 for ERC20Basic;
 
   /**
